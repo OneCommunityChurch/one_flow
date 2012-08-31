@@ -1,0 +1,66 @@
+{% extends "job_board/job_list.html" %}
+
+{% block more_head %}
+    <style type="text/css">
+            <!--
+                .oneColElsCtr #container {
+                width: 46em;
+                background: #FFFFFF;
+                margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+                border: 1px solid #000000;
+                text-align: left; /* this overrides the text-align: center on the body element. */
+                }
+                .oneColElsCtr #mainContent {
+                padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+                }
+            -->
+        </style>
+    <style type='text/css'>
+.wrapper{
+   position: relative;
+   float: left;
+   left: 1px;
+   width: 100%;
+   margin-bottom: 10px;
+   font-size: larger;
+}
+.left1{
+   position: relative;
+   float: left;
+   left: 5px;
+   width: 30%;
+   text-align: right;
+   margin-bottom: 10px;
+   font-weight: bold;
+}
+.left2{
+   position: relative;
+   float: left;
+   left: 15px;
+   width: 70%;
+   margin-bottom: 10px;
+}
+</style>
+{% endblock %}
+
+{% block right_column %}{% endblock %}
+
+{% block left_column %}
+            <div id="container">
+            <h2>{{ job.job_title }}</h2>
+             <br/>
+             <h3><span style="color: blue;">{{ job.company.name }}</span> - {{ job.company.city }}, {{ job.company.state }}</h3>
+             <br/>
+            <h4>Posted on {{ job.date_start_post }}</h4>
+             <div class="description" style="padding-top:40px; padding-bottom: 40px;">
+                {% autoescape off %}
+                 {{ job.job_description }}
+                {% endautoescape %}
+                <!--Adding an extra div close tag in order to fix richtext edits 'dangling div' -->
+                </div>
+             </div>
+             <div style="text-align:left;">
+                Apply by email:  <span style="color:blue;">{{ job.apply_email_address }}</span>
+             </div>
+             </div>
+{% endblock %}
